@@ -30,44 +30,46 @@ string em(string s)
 			}
 		}
 	}
-	if (em(r) == r)
+	if (s == r)
 	{
 		return r;
 	}
 	else
 	{
-		r = em(r);
-		return r;
+		return em(r);
 	}
 }
 
 int main()
 {
 	int n;
+	string abc = "ABC";
 	cin >> n;
 	for (int i = 0; i<n; i++)
 	{
 		string s;
 		cin >> s;
-		int l = s.size() + 1;
-		s = em(s);
-		int min = s.size();
 		if (s == "")
 		{
-			cout << l << endl;
+			cout << "1" << endl;
 		}
 		else
 		{
 			string ss = s;
+			int l = ss.size() + 1;
+			int min = ss.size();
 			for (int j = 0; j<ss.size(); j++)
 			{
-				s = ss;
-				string p = "";
-				p+= s[j];
-				s.insert(j, p);
-				if (min>em(s).size())
+				for (int k = 0; k < 3; k++)
 				{
-					min = em(s).size();
+					s = ss;
+					string p = "";
+					p += abc[k];
+					s.insert(j, p);
+					if (min > em(s).size())
+					{
+						min = em(s).size();
+					}
 				}
 			}
 			cout << l - min << endl;
